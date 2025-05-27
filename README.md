@@ -36,7 +36,7 @@ src/
 
 🚀 Getting Started
 1. Clone the Repo
-git clone https://github.com/your-username/react-auth-ui.git
+git clone https://github.com/Akshaya-Muthu/FormsApp
 cd react-auth-ui
 
 2. Install Dependencies
@@ -44,7 +44,7 @@ npm install
 
 3. Start Development Server
 npm start
-The app will be live at: http://localhost:3000
+The app will be live at: http://localhost:5173
 
 🧭 Routes
 
