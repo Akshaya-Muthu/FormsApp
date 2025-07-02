@@ -1,12 +1,67 @@
-# React + Vite
+🔐 React Auth UI (Frontend Only)
+A frontend-only authentication user interface built using React and Tailwind CSS. It includes pages for Register, Login, Forgot Password, and Reset Password — all styled with a clean, modern design and built with component reusability in mind.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📦 Features
+📋 Register Page (form validation included)
 
-Currently, two official plugins are available:
+🔐 Login Page (with basic state management)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+❓ Forgot Password Page (email input for password reset)
 
-## Expanding the ESLint configuration
+🔁 Reset Password Page (new password & confirm password)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🌈 Fully responsive design using Tailwind CSS
+
+✨ Reusable form components
+
+🚦 React Router for navigation
+
+🔧 Tech Stack
+React
+
+React Router DOM
+
+Tailwind CSS
+
+(Optional) Formik/Yup for form validation
+
+📁 Project Structure
+
+src/
+│
+├── components/        # Reusable UI components (Inputs, Buttons)
+├── pages/             # Register, Login, ForgotPassword, ResetPassword
+├── App.js             # Route configuration
+└── index.js           # Entry point
+
+🚀 Getting Started
+1. Clone the Repo
+git clone https://github.com/Akshaya-Muthu/FormsApp
+cd react-auth-ui
+
+2. Install Dependencies
+npm install
+
+3. Start Development Server
+npm start
+The app will be live at: http://localhost:5173
+
+🧭 Routes
+
+| Path               | Page            |
+| ------------------ | --------------- |
+| `/register`        | Register Page   |
+| `/login`           | Login Page      |
+| `/forgot-password` | Forgot Password |
+| `/reset-password`  | Reset Password  |
+
+📌 Future Enhancements
+🔐 Connect to real backend (Firebase, Express, Supabase, etc.)
+
+✅ Add full validation with Yup or custom hooks
+
+🌍 Add localization support
+
+🧪 Add unit tests
+
+
