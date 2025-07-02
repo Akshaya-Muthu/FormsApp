@@ -10,13 +10,8 @@ export default function ForgotPassword() {
     setMessage("");
     setError("");
 
-    if (!email) {
-      setError("Please enter your email.");
-      return;
-    }
-
     try {
-      const response = await fetch("https://password-reset-flow-la4y.onrender.com/api/auth/forgot-password", {
+      const response = await fetch("http://localhost:5000/api/auth/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -26,7 +21,7 @@ export default function ForgotPassword() {
       if (response.ok) {
         setMessage(data.message || "Reset link sent! Check your email.");
       } else {
-        setError(data.error || "Something went wrong.");
+        setError(data.message || "Something went wrong.");
       }
     } catch (err) {
       setError("Failed to send reset link. Try again later.");
@@ -34,13 +29,11 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage: "url('http://s1.picswalls.com/wallpapers/2016/03/29/beautiful-nature-high-definition_042323787_304.jpg')",
-        backgroundColor: "#000", // fallback
-      }}
-    >
+        backgroundColor: "#000",
+      }}>
       <div className="w-full max-w-md bg-white/20 backdrop-blur-md rounded-3xl shadow-2xl p-8">
         <h2 className="text-3xl font-extrabold text-center text-green-200 mb-6">
           Forgot Your Password?
@@ -61,12 +54,8 @@ export default function ForgotPassword() {
             Send Reset Link
           </button>
         </form>
-        {message && (
-          <p className="mt-4 text-green-300 font-medium text-center">{message}</p>
-        )}
-        {error && (
-          <p className="mt-4 text-red-300 font-medium text-center">{error}</p>
-        )}
+        {message && <p className="mt-4 text-green-300 font-medium text-center">{message}</p>}
+        {error && <p className="mt-4 text-red-300 font-medium text-center">{error}</p>}
       </div>
     </div>
   );

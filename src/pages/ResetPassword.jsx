@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function ResetPassword() {
-  const { token } = useParams();
+  const { id, token } = useParams();
   const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
@@ -26,24 +26,27 @@ export default function ResetPassword() {
     }
 
     try {
-      const response = await fetch(`https://localhost:5000/api/auth/reset-password/${token}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password }),
-      });
+      const response = await fetch(
+        `http://localhost:5000/api/auth/reset-password/${id}/${token}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+        }
+      );
 
       const data = await response.json();
 
       if (response.ok) {
-        setMessage("Password reset successfully!");
+        setMessage("Password reset successfully! Redirecting to login...");
         setTimeout(() => navigate("/login"), 2000);
       } else {
-        setError(data.error || "Invalid or expired token.");
+        setError(data.message || "Invalid or expired token.");
       }
     } catch (err) {
-      setError("Something went wrong. Try again.");
+      setError("Something went wrong. Please try again.");
     }
   };
 

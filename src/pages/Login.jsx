@@ -16,20 +16,18 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://password-reset-flow-la4y.onrender.com/api/auth/login", {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        alert("Login successful!");
         localStorage.setItem("token", data.token);
-        navigate("/dashboard");
+        alert("Login successful!");
+        navigate("/services");  // ⬅️ Navigate to services after login
       } else {
         alert(data.message || "Invalid credentials");
       }
@@ -42,43 +40,39 @@ export default function Login() {
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
-        backgroundImage:
-          "url('https://rare-gallery.com/mocahbig/467751-nature-landscape-mountains-water-reflection-rocks.jpg')",
+        backgroundImage: "url('https://rare-gallery.com/mocahbig/467751-nature-landscape-mountains-water-reflection-rocks.jpg')",
       }}
     >
-      <div className="w-full max-w-md bg-white/20 backdrop-blur-md rounded-3xl shadow-2xl p-8">
-        <h2 className="text-3xl font-extrabold text-center text-yellow-300 mb-6">
-          Welcome Back
+      <div className="w-full max-w-md bg-black/30 backdrop-blur-md rounded-3xl shadow-2xl p-8">
+        <h2 className="text-4xl font-extrabold text-center text-yellow-300 mb-6 font-serif">
+          🌟 Welcome Back to GrandVista 🌟
         </h2>
         <form className="space-y-5" onSubmit={handleSubmit}>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-white/50 rounded-lg shadow-sm bg-white/20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="w-full px-4 py-3 border border-yellow-400 rounded-xl shadow-sm bg-white/10 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           />
-
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Enter your password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-white/50 rounded-lg shadow-sm bg-white/20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="w-full px-4 py-3 border border-yellow-400 rounded-xl shadow-sm bg-white/10 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           />
-
           <button
             type="submit"
-            className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 rounded-lg transition transform hover:scale-105 shadow-lg"
+            className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-xl transition transform hover:scale-105 shadow-lg"
           >
             Login
           </button>
         </form>
-
         <p className="mt-4 text-center text-sm text-white">
           <Link to="/forgot-password" className="text-yellow-300 font-semibold hover:underline">
             Forgot Password?
