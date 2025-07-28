@@ -16,7 +16,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch("https://password-reset-flow-la4y.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -27,7 +27,7 @@ export default function Login() {
       if (res.ok) {
         localStorage.setItem("token", data.token);
         alert("Login successful!");
-        navigate("/services");  // ⬅️ Navigate to services after login
+        navigate("/services"); // Redirect after successful login
       } else {
         alert(data.message || "Invalid credentials");
       }
@@ -40,7 +40,8 @@ export default function Login() {
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
-        backgroundImage: "url('https://rare-gallery.com/mocahbig/467751-nature-landscape-mountains-water-reflection-rocks.jpg')",
+        backgroundImage:
+          "url('https://rare-gallery.com/mocahbig/467751-nature-landscape-mountains-water-reflection-rocks.jpg')",
       }}
     >
       <div className="w-full max-w-md bg-black/30 backdrop-blur-md rounded-3xl shadow-2xl p-8">

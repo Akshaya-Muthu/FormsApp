@@ -11,11 +11,12 @@ export default function ForgotPassword() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/forgot-password", {
+      const response = await fetch("https://password-reset-flow-la4y.onrender.com/api/auth/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+
       const data = await response.json();
 
       if (response.ok) {

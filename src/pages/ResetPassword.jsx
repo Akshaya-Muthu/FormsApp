@@ -27,7 +27,7 @@ export default function ResetPassword() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/reset-password/${id}/${token}`,
+        `https://password-reset-flow-la4y.onrender.com/api/auth/reset-password/${id}/${token}`,
         {
           method: "POST",
           headers: {
